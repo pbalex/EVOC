@@ -17,8 +17,9 @@ def send_input(command):
 	keyboard.press_and_release('alt+tab')
 
 def reference_callback(instance):
-		popup = Popup(title='Test popup',
-		content=Label(text='Hello world'),
+		popup = Popup(title='Reference',
+		content=Label(text='Open a new tab: "Ask EVOC open tab\n' +
+						'Close current tab: "Ask EVOC close tab\n'),
 		size_hint=(None, None), size=(400, 400))
 		popup.open()
 
