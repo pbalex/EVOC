@@ -7,7 +7,6 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 
-
 def send_input(command):
 	keyboard.press_and_release('alt+tab')
 	time.sleep(.25)
@@ -18,8 +17,17 @@ def send_input(command):
 
 def reference_callback(instance):
 		popup = Popup(title='Reference',
-		content=Label(text='Open a new tab: "Ask EVOC open tab\n' +
-						'Close current tab: "Ask EVOC close tab\n'),
+			content=TextInput(text='Open a new tab: "Ask EVOC open tab"\n' +
+			'Close current tab: "Ask EVOC close tab"\n' + 
+			'Open a new window: "Ask EVOC new window"\n' +
+			'Close current window: "Ask EVOC close window"\n' +
+			'Reopen last closed tab: "Ask EVOC open closed tab"\n' + 
+			'Go to search bar: "Ask EVOC go to search bar"\n' +
+			'Print page: "Ask EVOC print page"\n' + 
+			'Zoom in/out: "Ask EVOC zoom in/out"\n' + 
+			'Refresh page: "Ask EVOC refresh"\n' + 
+			'Fullscreen mode: "Ask EVOC fullscreen"\n' +
+			'Toggle bookmarks bar: "Ask EVOC toggle bookmarks"\n'),
 		size_hint=(None, None), size=(400, 400))
 		popup.open()
 
@@ -92,12 +100,4 @@ class MyApp(App):
 
 if __name__ == '__main__':
     MyApp().run()
-
-
-
-
-#keyboard.write('The quick brown fox jumps over the lazy dog.')
-
-# Press PAGE UP then PAGE DOWN to type "foobar".
-#keyboard.add_hotkey('page up, page down', lambda: keyboard.write('foobar'))
 
