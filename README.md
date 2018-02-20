@@ -1,4 +1,4 @@
-# EVOC (Efficient Voice-Operated Cursor)
+# EVOC (Efficient Voice Operated Cursor)
 #### Python Application
 
 To use the Python application, you will need to to [set up the Kivy environment](https://kivy.org/docs/guide/basic.html). 
