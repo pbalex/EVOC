@@ -27,19 +27,54 @@ def new_tab_callback(instance):
 
 def close_tab_callback(instance):
 	send_input('ctrl+w')
+	
+def new_window_callback(instance):
+	send_input('ctrl+n')
+
+def reopen_closed_tab_callback(instance):
+	send_input('ctrl+shift+t')
+
+def close_window_callback(instance):
+	send_input('ctrl+shift+w')
+	
+def address_bar_callback(instance):
+	send_input('ctrl+l')
+	
+def print_page_callback(instance):
+	send_input('ctrl+p')
 
 class Menu(GridLayout):
 
 	def __init__(self, **kwargs):
 		super(Menu, self).__init__(**kwargs)
 		self.cols = 2
-		btn1 = Button(text='Open a new Tab')
+		btn1 = Button(text='Open a new tab')
 		btn1.bind(on_press=new_tab_callback)
 		self.add_widget(btn1)
 
-		btn2 = Button(text='Close Current Tab')
+		btn2 = Button(text='Close current tab')
 		btn2.bind(on_press=close_tab_callback)
 		self.add_widget(btn2)
+		
+		btn3 = Button(text='Open new window')
+		btn3.bind(on_press=new_window_callback)
+		self.add_widget(btn3)
+		
+		btn4 = Button(text='Reopen closed tab')
+		btn4.bind(on_press=reopen_closed_tab_callback)
+		self.add_widget(btn4)
+		
+		btn5 = Button(text='Close current window')
+		btn5.bind(on_press=close_window_callback)
+		self.add_widget(btn5)
+		
+		btn6 = Button(text='Go to address bar')
+		btn6.bind(on_press=address_bar_callback)
+		self.add_widget(btn6)
+		
+		btn7 = Button(text='Print current page')
+		btn7.bind(on_press=print_page_callback)
+		self.add_widget(btn7)
 
 		btn_reference = Button(text='Reference')
 		btn_reference.bind(on_press=reference_callback)
@@ -56,16 +91,6 @@ class MyApp(App):
 
 if __name__ == '__main__':
     MyApp().run()
-
-
-
-
-
-
-
-
-
-
 
 
 
