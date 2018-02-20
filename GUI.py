@@ -15,6 +15,7 @@ def send_input(command):
 	keyboard.release(command)
 	keyboard.press_and_release('alt+tab')
 
+#REFERENCE INSTANCE
 def reference_callback(instance):
 		popup = Popup(title='Reference',
 			content=TextInput(text='Open a new tab: "Ask EVOC open tab"\n' +
@@ -31,6 +32,7 @@ def reference_callback(instance):
 		size_hint=(None, None), size=(400, 400))
 		popup.open()
 
+#FILE HEADER INSTANCES
 def new_tab_callback(instance):
 	send_input('ctrl+t')
 
@@ -51,12 +53,30 @@ def address_bar_callback(instance):
 	
 def print_page_callback(instance):
 	send_input('ctrl+p')
+	
+#VIEW HEADER INSTANCES
+def zoom_in_callback(instance):
+	send_input('ctrl+plus')
+
+def zoom_out_tab_callback(instance):
+	send_input('ctrl+minus')
+
+def refresh_callback(instance):
+	send_input('ctrl+r')
+	
+def full_screen_callback(instance):
+	send_input('F11')
+	
+def show_bookmarks_callback(instance):
+	send_input('ctrl+shift+b')
 
 class Menu(GridLayout):
 
 	def __init__(self, **kwargs):
 		super(Menu, self).__init__(**kwargs)
 		self.cols = 2
+		
+		#FILE HEADER BUTTONS
 		btn1 = Button(text='Open a new tab')
 		btn1.bind(on_press=new_tab_callback)
 		self.add_widget(btn1)
@@ -84,7 +104,29 @@ class Menu(GridLayout):
 		btn7 = Button(text='Print current page')
 		btn7.bind(on_press=print_page_callback)
 		self.add_widget(btn7)
+		
+		#VIEW HEADER BUTTONS
+		btn8 = Button(text='Zoom in')
+		btn8.bind(on_press=zoom_in_callback)
+		self.add_widget(btn8)
+		
+		btn9 = Button(text='Zoom out')
+		btn9.bind(on_press=zoom_out_callback)
+		self.add_widget(btn9)
+		
+		btn10 = Button(text='Refresh page')
+		btn10.bind(on_press=refresh_callback)
+		self.add_widget(btn10)
+		
+		btn11 = Button(text='Full screen')
+		btn11.bind(on_press=full_screen_callback)
+		self.add_widget(btn11)
+		
+		btn12 = Button(text='Show/hide bookmarks')
+		btn12.bind(on_press=show_bookmarks_callback)
+		self.add_widget(btn12)
 
+		#REFERENCE BUTTON
 		btn_reference = Button(text='Reference')
 		btn_reference.bind(on_press=reference_callback)
 		self.add_widget(btn_reference)
