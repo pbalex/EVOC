@@ -1,16 +1,5 @@
 'use strict';
 
-
-/**
- * This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
- * The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well as
- * testing instructions are located at http://amzn.to/1LzFrj6
- *
- * For additional samples, visit the Alexa Skills Kit Getting Started guide at
- * http://amzn.to/1LGWsLG
- */
-
-
 // --------------- Helpers that build all of the responses -----------------------
 var myBucket = 'commands-to-windows-app';
 function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
@@ -51,10 +40,9 @@ function getWelcomeResponse(callback) {
     const cardTitle = 'Welcome';
     const speechOutput = 'Welcome to EVOKE, please see the reference card for possible commands. ' +
         'Start your command with, ASK EVOKE.';
-    // If the user either does not reply to the welcome message or says something that is not
-    // understood, they will be prompted again with this text.
+
     const repromptText = 'Open the reference card to see possible commands.';
-    const shouldEndSession = false;
+    const shouldEndSession = true;
 
     callback(sessionAttributes,
         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -63,7 +51,6 @@ function getWelcomeResponse(callback) {
 function handleSessionEndRequest(callback) {
     const cardTitle = 'Session Ended';
     const speechOutput = 'Thank you for using EVOKE.';
-    // Setting this to true ends the session and exits the skill.
     const shouldEndSession = true;
 
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
@@ -79,7 +66,7 @@ function openTab(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should open tab';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -93,7 +80,7 @@ function closeAllOpenTabs(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should close all open tabs';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -107,7 +94,7 @@ function closeTab(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should close one tab';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -121,7 +108,7 @@ function closeWordDoc(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should close one word doc';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -135,7 +122,7 @@ function jumpToAddressBar(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should jump to the address bar';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -149,7 +136,7 @@ function openInternet(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should open an internet browser';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -163,7 +150,7 @@ function openNewWindow(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should open a new window';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -177,7 +164,7 @@ function redoWordAction(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should redo a word action';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -190,7 +177,7 @@ function saveWordDoc(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should save a word document';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -204,7 +191,7 @@ function scrollDown(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should scroll down one page';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -218,7 +205,7 @@ function scrollUp(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should scroll up one page';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -232,7 +219,7 @@ function searchOtherApps(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should search other apps open and reprompt';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -245,7 +232,7 @@ function stopSearchApps(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should stop app search and select app';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -259,7 +246,7 @@ function tab(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should emulate a tab press';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -273,7 +260,7 @@ function undoWord(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'this should undo a word action';
-    //write a 1 for open tab
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -288,7 +275,7 @@ function noIntent(intent, session, callback) {
 
     speechOutput = 'I am sorry, I do not recognize that command.' +
     ' Please look at the reference card for possible commands and try again.';
-    
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
@@ -302,7 +289,7 @@ function openReferenceCard(intent, session, callback) {
     const sessionAttributes = {};
 
     speechOutput = 'This should open a reference card';
-    
+    //write to database
     
     callback(sessionAttributes,
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
