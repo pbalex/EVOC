@@ -1,0 +1,191 @@
+{
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": [
+          "cancel"
+        ]
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": [
+          "help",
+          "help open references",
+          "open references",
+          "open reference"
+        ]
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": [
+          "close evoke",
+          "end evoke",
+          "open dragon"
+        ]
+      },
+      {
+        "name": "CloseAllOpenTabsIntent",
+        "samples": [
+          "close all",
+          "close all tabs"
+        ],
+        "slots": []
+      },
+      {
+        "name": "CloseTabIntent",
+        "samples": [
+          "close tab",
+          "close window"
+        ],
+        "slots": []
+      },
+      {
+        "name": "CloseWordDocIntent",
+        "samples": [
+          "close document",
+          "close word document"
+        ],
+        "slots": []
+      },
+      {
+        "name": "JumpToAddressBarIntent",
+        "samples": [
+          "search",
+          "type url",
+          "search google",
+          "jump to address bar"
+        ],
+        "slots": []
+      },
+      {
+        "name": "OpenInternetIntent",
+        "samples": [
+          "open chrome",
+          "open internet",
+          "open internet browser",
+          "open google"
+        ],
+        "slots": []
+      },
+      {
+        "name": "OpenNewWindowIntent",
+        "samples": [
+          "open new window"
+        ],
+        "slots": []
+      },
+      {
+        "name": "OpenReferenceCardIntent",
+        "samples": [
+          "open reference",
+          "open reference card",
+          "open card",
+          "open help card",
+          "open help",
+          "help card",
+          "reference card",
+          "reference"
+        ],
+        "slots": []
+      },
+      {
+        "name": "OpenTabIntent",
+        "samples": [
+          "open tab",
+          "new tab",
+          "new window"
+        ],
+        "slots": []
+      },
+      {
+        "name": "RedoWordActionIntent",
+        "samples": [
+          "redo"
+        ],
+        "slots": []
+      },
+      {
+        "name": "SaveWordDocIntent",
+        "samples": [
+          "save",
+          "save word doc",
+          "save document",
+          "save word document"
+        ],
+        "slots": []
+      },
+      {
+        "name": "ScrollDownIntent",
+        "samples": [
+          "scroll down",
+          "down"
+        ],
+        "slots": []
+      },
+      {
+        "name": "ScrollUpIntent",
+        "samples": [
+          "scroll up",
+          "up"
+        ],
+        "slots": []
+      },
+      {
+        "name": "SearchOtherAppsIntent",
+        "samples": [
+          "search other apps",
+          "search other applications",
+          "control tab"
+        ],
+        "slots": []
+      },
+      {
+        "name": "StopSearchAppsIntent",
+        "samples": [
+          "stop search",
+          "select app",
+          "select application"
+        ],
+        "slots": []
+      },
+      {
+        "name": "TabIntent",
+        "samples": [
+          "tab",
+          "press tab"
+        ],
+        "slots": []
+      },
+      {
+        "name": "UndoWordActionIntent",
+        "samples": [
+          "undo"
+        ],
+        "slots": []
+      },
+      {
+        "name": "UnknownCommandIntent",
+        "samples": [
+          "hello",
+          "whats up",
+          "jglkjfa",
+          "jfald",
+          "vjaoe",
+          "jfiwod",
+          "jjoqq",
+          "jfjsow",
+          "nvjvai",
+          "jjwoe",
+          "faiwoe",
+          "fjfiwe",
+          "jfajoe",
+          "gjweij",
+          "jdwiejf"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "evoke"
+  }
+}
