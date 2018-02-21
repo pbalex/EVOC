@@ -10,10 +10,7 @@
       {
         "name": "AMAZON.HelpIntent",
         "samples": [
-          "help",
-          "help open references",
-          "open references",
-          "open reference"
+          "help"
         ]
       },
       {
@@ -45,6 +42,14 @@
         "samples": [
           "close document",
           "close word document"
+        ],
+        "slots": []
+      },
+      {
+        "name": "FullscreenIntent",
+        "samples": [
+          "full screen",
+          "show full screen"
         ],
         "slots": []
       },
@@ -99,9 +104,38 @@
         "slots": []
       },
       {
+        "name": "PrintPageIntent",
+        "samples": [
+          "print",
+          "print page"
+        ],
+        "slots": []
+      },
+      {
         "name": "RedoWordActionIntent",
         "samples": [
           "redo"
+        ],
+        "slots": []
+      },
+      {
+        "name": "RefreshIntent",
+        "samples": [
+          "refresh",
+          "refresh page",
+          "refresh tab"
+        ],
+        "slots": []
+      },
+      {
+        "name": "ReopenClosedTabIntent",
+        "samples": [
+          "reopen closed tab",
+          "reopen close",
+          "reopen closed",
+          "reopen last tab",
+          "reopen tab",
+          "reopen last"
         ],
         "slots": []
       },
@@ -137,6 +171,14 @@
           "search other apps",
           "search other applications",
           "control tab"
+        ],
+        "slots": []
+      },
+      {
+        "name": "ShowBookmarksIntent",
+        "samples": [
+          "show bookmarks",
+          "bookmarks"
         ],
         "slots": []
       },
@@ -182,6 +224,22 @@
           "jfajoe",
           "gjweij",
           "jdwiejf"
+        ],
+        "slots": []
+      },
+      {
+        "name": "ZoomInIntent",
+        "samples": [
+          "zoom in",
+          "bigger"
+        ],
+        "slots": []
+      },
+      {
+        "name": "ZoomOutIntent",
+        "samples": [
+          "zoom out",
+          "smaller"
         ],
         "slots": []
       }
