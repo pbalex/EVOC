@@ -3,7 +3,6 @@ import time
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 
@@ -18,7 +17,7 @@ def send_input(command):
 #REFERENCE INSTANCE
 def reference_callback(instance):
 		popup = Popup(title='Reference',
-			content=TextInput(text='Open a new tab: "Ask EVOC open tab"\n' +
+			content=Label(text='Open a new tab: "Ask EVOC open tab"\n' +
 			'Close current tab: "Ask EVOC close tab"\n' + 
 			'Open a new window: "Ask EVOC new window"\n' +
 			'Close current window: "Ask EVOC close window"\n' +
@@ -58,7 +57,7 @@ def print_page_callback(instance):
 def zoom_in_callback(instance):
 	send_input('ctrl+plus')
 
-def zoom_out_tab_callback(instance):
+def zoom_out_callback(instance):
 	send_input('ctrl+minus')
 
 def refresh_callback(instance):
