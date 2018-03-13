@@ -1,5 +1,8 @@
 import keyboard
 import time
+import boto3
+import json
+from boto3.dynamodb.conditions import Key, Attr
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -7,12 +10,12 @@ from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 
 def send_input(command):
-	keyboard.press_and_release('alt+tab')
+	# keyboard.press_and_release('alt+tab')
 	time.sleep(.25)
 	keyboard.press(command)
 	time.sleep(.05)
 	keyboard.release(command)
-	keyboard.press_and_release('alt+tab')
+	# keyboard.press_and_release('alt+tab')
 
 #REFERENCE INSTANCE
 def reference_callback(instance):
@@ -32,41 +35,41 @@ def reference_callback(instance):
 		popup.open()
 
 #FILE HEADER INSTANCES
-def new_tab_callback(instance):
+def new_tab_callback():
 	send_input('ctrl+t')
 
-def close_tab_callback(instance):
+def close_tab_callback():
 	send_input('ctrl+w')
 	
-def new_window_callback(instance):
+def new_window_callback():
 	send_input('ctrl+n')
 
-def reopen_closed_tab_callback(instance):
+def reopen_closed_tab_callback():
 	send_input('ctrl+shift+t')
 
-def close_window_callback(instance):
+def close_window_callback():
 	send_input('ctrl+shift+w')
 	
-def address_bar_callback(instance):
+def address_bar_callback():
 	send_input('ctrl+l')
 	
-def print_page_callback(instance):
+def print_page_callback():
 	send_input('ctrl+p')
 	
 #VIEW HEADER INSTANCES
-def zoom_in_callback(instance):
+def zoom_in_callback():
 	send_input('ctrl+plus')
 
-def zoom_out_callback(instance):
+def zoom_out_callback():
 	send_input('ctrl+minus')
 
-def refresh_callback(instance):
+def refresh_callback():
 	send_input('ctrl+r')
 	
-def full_screen_callback(instance):
+def full_screen_callback():
 	send_input('F11')
 	
-def show_bookmarks_callback(instance):
+def show_bookmarks_callback():
 	send_input('ctrl+shift+b')
 
 class Menu(GridLayout):
@@ -137,8 +140,53 @@ class MyApp(App):
         return Menu()
 
 
+def query_db():
+	dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+	table = dynamodb.Table('TEST')
+
+	print(table.key_schema)
+	counter = 1
+	while 1:
+		response = table.query(
+			Limit=1,
+			ScanIndexForward=False,
+			KeyConditionExpression=Key('NUM').eq(1)
+		)
+
+		for i in response['Items']:
+			if (i['TIMESTAMP'] > counter):
+				if (i['COMMAND'] == "OPEN TAB"):
+					new_tab_callback()
+				elif (i['COMMAND'] == "CLOSE TAB"):
+					close_tab_callback()
+				elif (i['COMMAND'] == "OPEN WINDOW"):
+					open_window_callback()
+				elif (i['COMMAND'] == "CLOSE WINDOW"):
+					close_window_callback()
+				elif (i['COMMAND'] == "REOPEN CLOSED TAB"):
+					reopen_closed_tab_callback()
+				elif (i['COMMAND'] == "ADDRESS BAR"):
+					address_bar_callback()
+				elif (i['COMMAND'] == "PRINT PAGE"):
+					print_page_callback()
+				elif (i['COMMAND'] == "ZOOM IN"):
+					zoom_in_callback()
+				elif (i['COMMAND'] == "ZOOM OUT"):
+					zoom_out_callback()
+				elif (i['COMMAND'] == "REOPEN CLOSED TAB"):
+					reopen_closed_tab_callback()
+				elif (i['COMMAND'] == "REFRESH"):
+					refresh_callback()
+				elif (i['COMMAND'] == "FULL SCREEN"):
+					full_screen_callback()
+				elif (i['COMMAND'] == "SHOW BOOKMARKS"):
+					show_bookmarks_callback()
+
+			print(i)
+			counter = i['TIMESTAMP']
+
+		time.sleep(0.25)
 
 
-if __name__ == '__main__':
-    MyApp().run()
 
+query_db()
