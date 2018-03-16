@@ -22,7 +22,10 @@ def reference_callback(instance):
 		popup = Popup(title='Reference',
 			content=Label(text='Open a new tab: "Ask EVOC open tab"\n' +
 			'Close current tab: "Ask EVOC close tab"\n' + 
+			'Close all tabs: "Ask EVOC close all tabs"\n' +
+			'Close Word doc: "Ask EVOC close doc"\n' +
 			'Open a new window: "Ask EVOC new window"\n' +
+			'Open reference card: "Ask EVOC open reference"\n'+
 			'Close current window: "Ask EVOC close window"\n' +
 			'Reopen last closed tab: "Ask EVOC open closed tab"\n' + 
 			'Go to search bar: "Ask EVOC go to search bar"\n' +
