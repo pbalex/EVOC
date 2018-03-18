@@ -34,7 +34,7 @@ def reference_callback(instance):
 			'Refresh page: "Ask EVOC refresh"\n' + 
 			'Fullscreen mode: "Ask EVOC fullscreen"\n' +
 			'Toggle bookmarks bar: "Ask EVOC toggle bookmarks"\n'),
-		size_hint=(None, None), size=(400, 400))
+		size_hint=(None, None), size=(600, 600))
 		popup.open()
 
 #FILE HEADER INSTANCES
