@@ -28,7 +28,10 @@ def reference_callback(instance):
 	popup = Popup(title='Reference',
 		content=Label(text='Open a new tab: "Ask EVOC open tab"\n' +
 		'Close current tab: "Ask EVOC close tab"\n' + 
+		'Close all tabs: "Ask EVOC close all tabs"\n' +
+		'Close Word doc: "Ask EVOC close doc"\n' +
 		'Open a new window: "Ask EVOC new window"\n' +
+		'Open reference card: "Ask EVOC open reference"\n'+
 		'Close current window: "Ask EVOC close window"\n' +
 		'Reopen last closed tab: "Ask EVOC open closed tab"\n' + 
 		'Go to search bar: "Ask EVOC go to search bar"\n' +
@@ -61,8 +64,17 @@ def address_bar_callback():
 	
 def print_page_callback():
 	send_input('ctrl+p')
-	
-#VIEW HEADER INSTANCES
+
+def scroll_down_callback():
+	send_input('page down')
+
+def scroll_up_callback():
+	send_input('page up')
+
+def reference_callback():
+	##TODO
+	print('Add reference implementation')
+
 def zoom_in_callback():
 	send_input('ctrl+plus')
 
@@ -77,6 +89,25 @@ def full_screen_callback():
 	
 def show_bookmarks_callback():
 	send_input('ctrl+shift+b')
+
+#FIND UTILITY
+def tab_callback():
+	send_input('tab')
+
+def find_callback():
+	send_input('ctrl+f')
+
+def enter_callback():
+	send_input('enter')
+
+def escape_callback():
+	send_input('esc')
+
+def select_callback():
+	send_input('esc')
+	time.sleep(.05)
+	send_input('enter')
+
 
 def query_db():
 	dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
@@ -98,16 +129,30 @@ def query_db():
 					new_tab_callback()
 				elif (i['COMMAND'] == "CLOSE TAB"):
 					close_tab_callback()
-				elif (i['COMMAND'] == "OPEN WINDOW"):
-					open_window_callback()
-				elif (i['COMMAND'] == "CLOSE WINDOW"):
+				elif (i['COMMAND'] == "OPEN NEW WINDOW"):
+					new_window_callback()
+				elif (i['COMMAND'] == "CLOSE ALL TABS"):
 					close_window_callback()
 				elif (i['COMMAND'] == "REOPEN CLOSED TAB"):
 					reopen_closed_tab_callback()
-				elif (i['COMMAND'] == "ADDRESS BAR"):
+				elif (i['COMMAND'] == "JUMP TO ADDRESS BAR"):
 					address_bar_callback()
 				elif (i['COMMAND'] == "PRINT PAGE"):
 					print_page_callback()
+				elif (i['COMMAND'] == "SCROLL DOWN"):
+					scroll_down_callback()
+				elif (i['COMMAND'] == "SCROLL UP"):
+					scroll_up_callback()
+				elif (i['COMMAND'] == "TAB"):
+					tab_callback()
+				elif (i['COMMAND'] == "CONTROL FIND"):
+					find_callback()
+				elif (i['COMMAND'] == "ENTER"):
+					enter_callback()
+				elif (i['COMMAND'] == "SELECT"):
+					select_callback()
+				elif (i['COMMAND'] == "ESCAPE"):
+					escape_callback()
 				elif (i['COMMAND'] == "ZOOM IN"):
 					zoom_in_callback()
 				elif (i['COMMAND'] == "ZOOM OUT"):
@@ -116,12 +161,20 @@ def query_db():
 					reopen_closed_tab_callback()
 				elif (i['COMMAND'] == "REFRESH"):
 					refresh_callback()
-				elif (i['COMMAND'] == "FULL SCREEN"):
+				elif (i['COMMAND'] == "FULLSCREEN"):
 					full_screen_callback()
 				elif (i['COMMAND'] == "SHOW BOOKMARKS"):
 					show_bookmarks_callback()
+				elif (i['COMMAND'] == "OPEN REFERENCE"):
+					reference_callback()
+				table.delete_item(
+					Key={ 'NUM':1,
+						'TIMESTAMP':i['TIMESTAMP']	}
+				)
 			print(i)
 			counter = i['TIMESTAMP']
+			#Add Deleting here
+
 
 		time.sleep(0.25)
 
