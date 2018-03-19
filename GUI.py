@@ -20,18 +20,26 @@ def send_input(command):
 #REFERENCE INSTANCE
 def reference_callback(instance):
 		popup = Popup(title='Reference',
-			content=Label(text='Open a new tab: "Ask EVOC open tab"\n' +
-			'Close current tab: "Ask EVOC close tab"\n' + 
-			'Open a new window: "Ask EVOC new window"\n' +
+			content=Label(text='Close all tabs: "Ask EVOC close all tabs"\n' +
+			'Close current tab: "Ask EVOC close tab"\n' +
 			'Close current window: "Ask EVOC close window"\n' +
-			'Reopen last closed tab: "Ask EVOC open closed tab"\n' + 
-			'Go to search bar: "Ask EVOC go to search bar"\n' +
-			'Print page: "Ask EVOC print page"\n' + 
-			'Zoom in/out: "Ask EVOC zoom in/out"\n' + 
-			'Refresh page: "Ask EVOC refresh"\n' + 
+			'Close Word doc: "Ask EVOC close doc"\n' +
 			'Fullscreen mode: "Ask EVOC fullscreen"\n' +
+			'Open a new window: "Ask EVOC new window"\n' +
+			'Open a new tab: "Ask EVOC open tab"\n' +
+			'Open reference card: "Ask EVOC open reference"\n'+
+			'Open a web browser: "Ask EVOC open internet"\n' +
+			'Print page: "Ask EVOC print page"\n' +
+			'Redo: "Ask EVOC redo"\n' +
+			'Refresh page: "Ask EVOC refresh"\n' +
+			'Reopen last closed tab: "Ask EVOC open closed tab"\n' + 
+			'Save: "Ask EVOC save"\n' +
+			'Scroll down: "Ask EVOC scroll down"\n' +
+			'Scroll up: "Ask EVOC scroll up"\n' +
+			'Go to search bar: "Ask EVOC go to search bar"\n' +
+			'Zoom in/out: "Ask EVOC zoom in/out"\n' + 
 			'Toggle bookmarks bar: "Ask EVOC toggle bookmarks"\n'),
-		size_hint=(None, None), size=(400, 400))
+		size_hint=(None, None), size=(600, 600))
 		popup.open()
 
 #FILE HEADER INSTANCES
