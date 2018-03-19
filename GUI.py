@@ -2,45 +2,141 @@ import keyboard
 import time
 import boto3
 import json
+import threading
+import ctypes
+import sys
+import multiprocessing
 from boto3.dynamodb.conditions import Key, Attr
+from botocore.exceptions import ClientError
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
+from kivy.config import Config
+# from kivy.core.window import Window
+import kivy
+
+class ReferenceCard(App):
+
+	def build(self):
+		layout = GridLayout(cols=3)
+		kivy.core.window.Window.size = (1800, 1000)
+		kivy.core.window.Window.top = 0
+		kivy.core.window.Window.left = 0
+		#kivy.core.window.Window.toggle_fullscreen()
+
+		layout.add_widget(Label(text='Command', size_hint_x=None, width = 300, font_size='24sp', bold = True))
+		layout.add_widget(Label(text='Description', size_hint_x=None, width = 500, font_size='24sp', bold = True))
+		layout.add_widget(Label(text='Phrases (begin with “Echo, ask EVOC”)', font_size='24sp', bold = True))
+
+		layout.add_widget(Button(text='Close all tabs', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Closes all tabs in current window', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='”Close all”,  “close all tabs”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Close tab', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Closes current browser tab', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='”Close tab”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Close window', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Closes current window', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='”Close window”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Enter', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Presses enter', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='”Enter”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Select', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Selects current link', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='”Select”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Find', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Opens find window', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='”Find”,  “Control F”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Fullscreen', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Makes current window fullscreen', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='”Fullscreen”,  “Show fullscreen”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Open New Window', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Opens a new window in browser', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“open new window”, “new window”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Open Reference Card', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Opens the reference card', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“open reference card”, “Open reference”, “Open card”, “Open help card”, “help”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Open Tab', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Opens a new tab in browser', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Open tab”, “Open new tab”, “New tab”', font_size='24sp'))
+
+		# layout.add_widget(Button(text='Open Web Browser', size_hint_x=None, width = 300, font_size='24sp'))
+		# layout.add_widget(Button(text='Opens a web browser (Chrome)', size_hint_x=None, width = 500, font_size='24sp'))
+		# layout.add_widget(Button(text='“open chrome”, “open internet”, “open internet browser”, “open Google”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Print', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Open print window for current document', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Print”, “Print page”, “Print document”, “Print doc”', font_size='24sp'))
+
+		# layout.add_widget(Button(text='Redo', size_hint_x=None, width = 300, font_size='24sp'))
+		# layout.add_widget(Button(text='Redoes previous action', size_hint_x=None, width = 500, font_size='24sp'))
+		# layout.add_widget(Button(text='“Redo”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Refresh', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Refreshes current page', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Refresh”, “Refresh page”, “Refresh tab”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Reopen tab', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Reopens the most recent closed tab', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Reopen”, “Reopen closed tab”, “Reopen tab”, “Reopen last tab”, “Reopen last”', font_size='24sp'))
+
+		# layout.add_widget(Button(text='Save', size_hint_x=None, width = 300, font_size='24sp'))
+		# layout.add_widget(Button(text='Saves current document', size_hint_x=None, width = 500, font_size='24sp'))
+		# layout.add_widget(Button(text='Save”, “Save doc”, “Save word doc”, “Save word document”, “Save document”, “Save page”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Scroll Down', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Scrolls page down', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Scroll down”, “down”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Scroll Up', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Scrolls page up', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Scroll up”, “Up”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Search', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Jumps to address bar in browser', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Search”, “Type url”, “Search google”, “Jump to address bar”', font_size='24sp'))
+
+		# layout.add_widget(Button(text='Switch Applications', size_hint_x=None, width = 300, font_size='24sp'))
+		# layout.add_widget(Button(text='TODO', size_hint_x=None, width = 500, font_size='24sp'))
+		# layout.add_widget(Button(text='“Control tab”, “Search other applications”, “Search other apps”, “Search apps”, “Switch apps”, “Switch applications” ', font_size='24sp'))
+
+		layout.add_widget(Button(text='Show Bookmarks', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Opens saved bookmarks', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Show bookmarks”, “Bookmarks”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Tab', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Tabs', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Press tab”, “Tab”', font_size='24sp'))
+
+		# layout.add_widget(Button(text='Undo', size_hint_x=None, width = 300, font_size='24sp'))
+		# layout.add_widget(Button(text='Undoes previous action', size_hint_x=None, width = 500, font_size='24sp'))
+		# layout.add_widget(Button(text='“Undo”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Zoom In', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Zooms screen in', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Zoom in”, “Bigger”, “Zoom”', font_size='24sp'))
+
+		layout.add_widget(Button(text='Zoom Out', size_hint_x=None, width = 300, font_size='24sp'))
+		layout.add_widget(Button(text='Zooms screen out', size_hint_x=None, width = 500, font_size='24sp'))
+		layout.add_widget(Button(text='“Zoom out”, “Smaller”', font_size='24sp'))
+		return layout
 
 def send_input(command):
 	# keyboard.press_and_release('alt+tab')
-	time.sleep(.25)
 	keyboard.press(command)
 	time.sleep(.05)
 	keyboard.release(command)
 	# keyboard.press_and_release('alt+tab')
-
-#REFERENCE INSTANCE
-def reference_callback(instance):
-		popup = Popup(title='Reference',
-			content=Label(text='Close all tabs: "Ask EVOC close all tabs"\n' +
-			'Close current tab: "Ask EVOC close tab"\n' +
-			'Close current window: "Ask EVOC close window"\n' +
-			'Close Word doc: "Ask EVOC close doc"\n' +
-			'Fullscreen mode: "Ask EVOC fullscreen"\n' +
-			'Open a new window: "Ask EVOC new window"\n' +
-			'Open a new tab: "Ask EVOC open tab"\n' +
-			'Open reference card: "Ask EVOC open reference"\n'+
-			'Open a web browser: "Ask EVOC open internet"\n' +
-			'Print page: "Ask EVOC print page"\n' +
-			'Redo: "Ask EVOC redo"\n' +
-			'Refresh page: "Ask EVOC refresh"\n' +
-			'Reopen last closed tab: "Ask EVOC open closed tab"\n' + 
-			'Save: "Ask EVOC save"\n' +
-			'Scroll down: "Ask EVOC scroll down"\n' +
-			'Scroll up: "Ask EVOC scroll up"\n' +
-			'Go to search bar: "Ask EVOC go to search bar"\n' +
-			'Zoom in/out: "Ask EVOC zoom in/out"\n' + 
-			'Toggle bookmarks bar: "Ask EVOC toggle bookmarks"\n'),
-		size_hint=(None, None), size=(600, 600))
-		popup.open()
 
 #FILE HEADER INSTANCES
 def new_tab_callback():
@@ -63,8 +159,13 @@ def address_bar_callback():
 	
 def print_page_callback():
 	send_input('ctrl+p')
-	
-#VIEW HEADER INSTANCES
+
+def scroll_down_callback():
+	send_input('page down')
+
+def scroll_up_callback():
+	send_input('page up')
+
 def zoom_in_callback():
 	send_input('ctrl+plus')
 
@@ -80,103 +181,94 @@ def full_screen_callback():
 def show_bookmarks_callback():
 	send_input('ctrl+shift+b')
 
-class Menu(GridLayout):
+#FIND UTILITY
+def tab_callback():
+	send_input('tab')
 
-	def __init__(self, **kwargs):
-		super(Menu, self).__init__(**kwargs)
-		self.cols = 2
-		
-		#FILE HEADER BUTTONS
-		btn1 = Button(text='Open a new tab')
-		btn1.bind(on_press=new_tab_callback)
-		self.add_widget(btn1)
+def find_callback():
+	send_input('ctrl+f')
 
-		btn2 = Button(text='Close current tab')
-		btn2.bind(on_press=close_tab_callback)
-		self.add_widget(btn2)
-		
-		btn3 = Button(text='Open new window')
-		btn3.bind(on_press=new_window_callback)
-		self.add_widget(btn3)
-		
-		btn4 = Button(text='Reopen closed tab')
-		btn4.bind(on_press=reopen_closed_tab_callback)
-		self.add_widget(btn4)
-		
-		btn5 = Button(text='Close current window')
-		btn5.bind(on_press=close_window_callback)
-		self.add_widget(btn5)
-		
-		btn6 = Button(text='Go to address bar')
-		btn6.bind(on_press=address_bar_callback)
-		self.add_widget(btn6)
-		
-		btn7 = Button(text='Print current page')
-		btn7.bind(on_press=print_page_callback)
-		self.add_widget(btn7)
-		
-		#VIEW HEADER BUTTONS
-		btn8 = Button(text='Zoom in')
-		btn8.bind(on_press=zoom_in_callback)
-		self.add_widget(btn8)
-		
-		btn9 = Button(text='Zoom out')
-		btn9.bind(on_press=zoom_out_callback)
-		self.add_widget(btn9)
-		
-		btn10 = Button(text='Refresh page')
-		btn10.bind(on_press=refresh_callback)
-		self.add_widget(btn10)
-		
-		btn11 = Button(text='Full screen')
-		btn11.bind(on_press=full_screen_callback)
-		self.add_widget(btn11)
-		
-		btn12 = Button(text='Show/hide bookmarks')
-		btn12.bind(on_press=show_bookmarks_callback)
-		self.add_widget(btn12)
+def enter_callback():
+	send_input('enter')
 
-		#REFERENCE BUTTON
-		btn_reference = Button(text='Reference')
-		btn_reference.bind(on_press=reference_callback)
-		self.add_widget(btn_reference)
+def escape_callback():
+	send_input('esc')
 
+def undo_callback():
+	send_input('ctrl+z')
 
-class MyApp(App):
+def select_callback():
+	send_input('esc')
+	time.sleep(.05)
+	send_input('enter')
 
-    def build(self):
-        return Menu()
+def run_app():
+	print("running reference card")
+	app = ReferenceCard()
+	app.run()
 
+def delete_one_from_table(timestamp):
+	dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+	table = dynamodb.Table('TEST')
+	table.delete_item(
+		Key={ 
+			'NUM':1,
+			'TIMESTAMP':timestamp
+		}
+	)
 
 def query_db():
 	dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 	table = dynamodb.Table('TEST')
 
+	has_been_started = False
 	print(table.key_schema)
-	counter = 1
+	counter = 0
+
+	ref_thread = threading.Thread(target = run_app)
+
 	while 1:
 		response = table.query(
 			Limit=1,
 			ScanIndexForward=False,
 			KeyConditionExpression=Key('NUM').eq(1)
 		)
-
 		for i in response['Items']:
+			print(i['COMMAND'])
 			if (i['TIMESTAMP'] > counter):
-				if (i['COMMAND'] == "OPEN TAB"):
+				if (i['COMMAND'] == "EXIT"):
+					delete_one_from_table(i['TIMESTAMP'])
+					sys.exit(0)
+				elif (i['COMMAND'] == "OPEN TAB"):
 					new_tab_callback()
 				elif (i['COMMAND'] == "CLOSE TAB"):
 					close_tab_callback()
-				elif (i['COMMAND'] == "OPEN WINDOW"):
-					open_window_callback()
-				elif (i['COMMAND'] == "CLOSE WINDOW"):
+				elif (i['COMMAND'] == "OPEN NEW WINDOW"):
+					new_window_callback()
+				elif (i['COMMAND'] == "CLOSE ALL TABS"):
 					close_window_callback()
 				elif (i['COMMAND'] == "REOPEN CLOSED TAB"):
 					reopen_closed_tab_callback()
-				elif (i['COMMAND'] == "ADDRESS BAR"):
+				elif (i['COMMAND'] == "JUMP TO ADDRESS BAR"):
 					address_bar_callback()
 				elif (i['COMMAND'] == "PRINT PAGE"):
 					print_page_callback()
+				elif (i['COMMAND'] == "SCROLL DOWN"):
+					scroll_down_callback()
+				elif (i['COMMAND'] == "SCROLL UP"):
+					scroll_up_callback()
+				elif (i['COMMAND'] == "TAB"):
+					tab_callback()
+				elif (i['COMMAND'] == "CONTROL FIND"):
+					find_callback()
+				elif (i['COMMAND'] == "ENTER"):
+					enter_callback()
+				elif (i['COMMAND'] == "SELECT"):
+					select_callback()
+				elif (i['COMMAND'] == "UNDO"):
+					undo_callback()
+				elif (i['COMMAND'] == "ESCAPE"):
+					escape_callback()
 				elif (i['COMMAND'] == "ZOOM IN"):
 					zoom_in_callback()
 				elif (i['COMMAND'] == "ZOOM OUT"):
@@ -185,16 +277,22 @@ def query_db():
 					reopen_closed_tab_callback()
 				elif (i['COMMAND'] == "REFRESH"):
 					refresh_callback()
-				elif (i['COMMAND'] == "FULL SCREEN"):
+				elif (i['COMMAND'] == "FULLSCREEN"):
 					full_screen_callback()
 				elif (i['COMMAND'] == "SHOW BOOKMARKS"):
 					show_bookmarks_callback()
-
-			print(i)
+				elif (i['COMMAND'] == "OPEN REFERENCE"):
+					threading.Thread(target = run_app,daemon = True).start()
+					# ref_thread.daemon = True
+					# ref_thread.start()
+				# elif (i['COMMAND'] == "CLOSE REFERENCE"):
+				#  	# x = get_running_app()
+				#  	kivy.core.window.Window.hide()
+				delete_one_from_table(i['TIMESTAMP'])
 			counter = i['TIMESTAMP']
 
 		time.sleep(0.25)
 
-
-
 query_db()
+
+
