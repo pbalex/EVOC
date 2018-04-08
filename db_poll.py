@@ -4,10 +4,10 @@ import boto3
 import json
 import threading
 import ctypes
+import win32gui
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
 
-import win32gui
 
 
 def send_input(command):
@@ -24,6 +24,30 @@ def select_callback():
 	time.sleep(.05)
 	send_input('enter')
 
+def switch_to_window(switch):
+	"""
+	Generates list of the hwnd of all 'real' windows.
+
+	Returns:
+	    (bool): List of hwnd of real windows.
+	"""
+	def call(hwnd, param):
+		"""
+		The callback function to be used by EnumWindows.
+		Appends all hwnds to param list
+		"""
+		param.append(hwnd)
+
+	winds = []
+	win32gui.EnumWindows(call, winds)
+
+	for window in winds:
+		print (win32gui.GetWindowText(window))
+		if switch.lower() in win32gui.GetWindowText(window).lower():
+			print ("found window")
+			win32gui.SetActiveWindow(window)
+			win32gui.SetForegroundWindow(window)
+			break
 
 #DynamoDB utility
 def delete_one_from_table(timestamp):
