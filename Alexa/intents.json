@@ -30,9 +30,23 @@
         "slots": []
       },
       {
+        "name": "CloseReferenceCardIntent",
+        "samples": [
+          "close reference card",
+          "close reference"
+        ],
+        "slots": []
+      },
+      {
         "name": "CloseTabIntent",
         "samples": [
-          "close tab",
+          "close tab"
+        ],
+        "slots": []
+      },
+      {
+        "name": "CloseWindowIntent",
+        "samples": [
           "close window"
         ],
         "slots": []
@@ -46,10 +60,36 @@
         "slots": []
       },
       {
+        "name": "EnterIntent",
+        "samples": [
+          "enter",
+          "next"
+        ],
+        "slots": []
+      },
+      {
+        "name": "EscapeIntent",
+        "samples": [
+          "escape"
+        ],
+        "slots": []
+      },
+      {
+        "name": "FindIntent",
+        "samples": [
+          "find",
+          "control find",
+          "control f"
+        ],
+        "slots": []
+      },
+      {
         "name": "FullscreenIntent",
         "samples": [
           "full screen",
-          "show full screen"
+          "show full screen",
+          "exit full screen",
+          "exit"
         ],
         "slots": []
       },
@@ -99,7 +139,7 @@
         "samples": [
           "open tab",
           "new tab",
-          "new window"
+          "open new tab"
         ],
         "slots": []
       },
@@ -171,6 +211,14 @@
           "search other apps",
           "search other applications",
           "control tab"
+        ],
+        "slots": []
+      },
+      {
+        "name": "SelectIntent",
+        "samples": [
+          "select",
+          "choose"
         ],
         "slots": []
       },
