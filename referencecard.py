@@ -154,7 +154,7 @@ tr:nth-child(even) {
     <td>"move to next paragraph" "paragraph" "go to next paragraph" "next paragraph"</td>
   </tr>
   <tr>
-    <td>New Paragraph</td>
+    <td>New Document</td>
     <td>Creates a new document in Word</td>
     <td>"make new document" "make new doc" "create new doc" "create new document" "new document"</td>
   </tr>
