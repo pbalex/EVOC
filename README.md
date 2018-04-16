@@ -1,8 +1,9 @@
 # EVOC (Efficient Voice Operated Cursor)
 #### Python Application
 
-To use the Python application, you will need to to [set up the Kivy environment](https://kivy.org/docs/guide/basic.html). 
-
+1. Install boto3 with $pip install boto3
+2. Download referencecard.py and db_poll.py
+2. Run db_poll.py with $./db_poll.py
 
 #### Alexa Skill
 
