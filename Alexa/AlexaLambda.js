@@ -92,7 +92,7 @@ function openTab(intent, session, callback) {
     } 
   });
 
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     let speechOutput = '';
@@ -122,7 +122,7 @@ function closeAllOpenTabs(intent, session, callback) {
   });
 
 
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -149,7 +149,7 @@ function closeTab(intent, session, callback) {
         speechOutput = 'this should close current tab';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     
@@ -177,7 +177,7 @@ function closeWordDoc(intent, session, callback) {
         speechOutput = 'this should close one word doc';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
 
@@ -206,7 +206,7 @@ function jumpToAddressBar(intent, session, callback) {
         speechOutput = 'this should jump to address bar';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -233,7 +233,7 @@ function openInternet(intent, session, callback) {
         speechOutput = 'this should open an internet browser';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -260,7 +260,7 @@ function openNewWindow(intent, session, callback) {
         speechOutput = 'this should open a new window';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -287,7 +287,7 @@ function redoWordAction(intent, session, callback) {
         speechOutput = 'this should redo a word action';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     
@@ -314,7 +314,7 @@ function saveWordDoc(intent, session, callback) {
         speechOutput = 'this should save a word document';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -341,7 +341,7 @@ function scrollDown(intent, session, callback) {
         speechOutput = 'this should scroll down one page';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -368,33 +368,6 @@ function scrollUp(intent, session, callback) {
         speechOutput = 'this should scroll up one page';
     }
   });
-    let shouldEndSession = true;
-    const repromptText = null;
-    const sessionAttributes = {};
-    callback(sessionAttributes,
-         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
-    
-}
-
-function searchOtherApps(intent, session, callback) {
-    var timestamp = Date.now().toString();
-        var params = {
-        TableName: 'TEST',
-        Item: {
-            'TIMESTAMP' : {N: timestamp},
-            'COMMAND' : {S: 'SEARCH OTHER APPS'},
-            'NUM' : {N: '1'}
-        }
-    };
-   let speechOutput = '';
-    ddb.putItem(params, function(err, data) {
-     if (err) {
-       speechOutput = JSON.stringify(err, null, 2);
-       
-    } else {
-        speechOutput = 'this should search other apps open and reprompt';
-    }
-  });
     let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
@@ -402,32 +375,7 @@ function searchOtherApps(intent, session, callback) {
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
     
 }
-function stopSearchApps(intent, session, callback) {
-    var timestamp = Date.now().toString();
-        var params = {
-        TableName: 'TEST',
-        Item: {
-            'TIMESTAMP' : {N: timestamp},
-            'COMMAND' : {S: 'STOP SEARCH APPS'},
-            'NUM' : {N: '1'}
-        }
-    };
-   let speechOutput = '';
-    ddb.putItem(params, function(err, data) {
-     if (err) {
-       speechOutput = JSON.stringify(err, null, 2);
-       
-    } else {
-        speechOutput = 'this should stop app search and select app';
-    }
-  });
-    let shouldEndSession = true;
-    const repromptText = null;
-    const sessionAttributes = {};
-    callback(sessionAttributes,
-         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
-    
-}
+
 
 function tab(intent, session, callback) {
     var timestamp = Date.now().toString();
@@ -448,7 +396,7 @@ function tab(intent, session, callback) {
         speechOutput = 'this should emulate a tab press';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     
@@ -476,7 +424,7 @@ function undoWord(intent, session, callback) {
         speechOutput = 'this should undo a word action';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     
@@ -519,7 +467,7 @@ function openReferenceCard(intent, session, callback) {
         speechOutput = 'this should open a reference card';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -546,7 +494,7 @@ function reopenClosedTab(intent, session, callback) {
         speechOutput = 'this should reopen a closed tab';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     
@@ -573,7 +521,7 @@ function printPage(intent, session, callback) {
         speechOutput = 'this should open a print page window';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     
@@ -600,7 +548,7 @@ function zoomIn(intent, session, callback) {
         speechOutput = 'this should zoom in';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -626,7 +574,7 @@ function zoomOut(intent, session, callback) {
         speechOutput = 'this should zoom out';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -652,7 +600,7 @@ function refresh(intent, session, callback) {
         speechOutput = 'this should refresh the page';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -678,7 +626,7 @@ function fullscreen(intent, session, callback) {
         speechOutput = 'this should show a full screen';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     callback(sessionAttributes,
@@ -704,7 +652,7 @@ function showBookmarks(intent, session, callback) {
         speechOutput = 'this should show the bookmarks';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
 
@@ -729,8 +677,7 @@ function controlFind(intent, session, callback) {
        
     } 
   });
-    let shouldEndSession = true;
-    // TODO CHECK THIS
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
     let speechOutput = "Ok, keep saying next until you've reached your desired location";
@@ -758,7 +705,7 @@ function enter(intent, session, callback) {
         speechOutput = 'this should emulate and enter press';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
 
@@ -766,7 +713,7 @@ function enter(intent, session, callback) {
          buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
 }
 
-function escape(intent, session, callback) {
+function escape_(intent, session, callback) {
     var timestamp = Date.now().toString();
     var params = {
         TableName: 'TEST',
@@ -785,7 +732,7 @@ function escape(intent, session, callback) {
         speechOutput = 'this should escape';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
 
@@ -812,7 +759,7 @@ function select(intent, session, callback) {
         speechOutput = 'this should select';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
 
@@ -840,7 +787,88 @@ function closeReferenceCard(intent, session, callback) {
         speechOutput = 'this should close reference card';
     }
   });
-    let shouldEndSession = true;
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function nextParagraph(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'NEXT PARAGRAPH'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go to next paragraph';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function newDoc(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'NEW DOC'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should open a new doc';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function openDoc(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'OPEN DOC'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should open a new doc';
+    }
+  });
+    let shouldEndSession = false;
     const repromptText = null;
     const sessionAttributes = {};
 
@@ -849,8 +877,822 @@ function closeReferenceCard(intent, session, callback) {
 }
 
 
+function indent(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'INDENT'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should indent';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
 
 
+function center(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'CENTER'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should center';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function pageBreak(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'PAGE BREAK'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should page break';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function decreaseFont(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'DECREASE FONT'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should decrease font';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function increaseFont(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'INCREASE FONT'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should increase font';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function beginningDoc(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'BEGINNING DOC'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go to beginning of doc';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function endDoc(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'END DOC'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go to end of doc';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function beginningLine(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'BEGINNING LINE'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go to beginning of line';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function endLine(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'END LINE'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go to the end of line';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function bold(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'BOLD'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should bold';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function italic(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'ITALIC'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should italicize';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function underline(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'UNDERLINE'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should underline';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function saveAs(intent, session, callback, saveName) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'SAVE AS'},
+            'NUM' : {N: '1'},
+            'CUSTOM' : {S: saveName}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should save as';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function pageBack(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'PAGE BACK'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go page back';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function pageForward(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'PAGE FORWARD'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go a page forward';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function search(intent, session, callback, searchQuery) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'SEARCH'},
+            'NUM' : {N: '1'},
+            'CUSTOM': {S: searchQuery}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should search';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function addBookmarks(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'ADD BOOKMARKS'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should add a bookmark';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function backTab(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'SHIFT TAB'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should shift tab';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function webpageBack(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'WEBPAGE BACK'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go a webpage back';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function webpageForward(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'WEBPAGE FORWARD'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go a webpage forward';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function switchTabs(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'CONTROL TAB'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should control tab';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function scrollLeft(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'SCROLL LEFT'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should scroll left';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function scrollRight(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'SCROLL RIGHT'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should scroll right';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function switchApp(intent, session, callback, app_name) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'SWITCH APP'},
+            'NUM' : {N: '1'},
+            'CUSTOM': {S: app_name}
+            
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should switch app';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function gotoLink(intent, session, callback, link) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'GOTO'},
+            'NUM' : {N: '1'},
+            'CUSTOM': {S: link}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should goto';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function openBookmarks(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'OPEN BOOKMARKS'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should open bookmarks';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function switchTabsBack(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'CONTROL SHIFT TAB'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should go control shift tab';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function type(intent, session, callback, type_query) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'TYPE'},
+            'NUM' : {N: '1'},
+            'CUSTOM': {S: type_query}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should type';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function downArrow(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'DOWN ARROW'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should down arrow';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function upArrow(intent, session, callback) {
+    var timestamp = Date.now().toString();
+    var params = {
+        TableName: 'TEST',
+        Item: {
+            'TIMESTAMP' : {N: timestamp},
+            'COMMAND' : {S: 'UP ARROW'},
+            'NUM' : {N: '1'}
+        }
+    };
+   let speechOutput = '';
+    ddb.putItem(params, function(err, data) {
+     if (err) {
+       speechOutput = JSON.stringify(err, null, 2);
+       
+    } else {
+        speechOutput = 'this should up arrow';
+    }
+  });
+    let shouldEndSession = false;
+    const repromptText = null;
+    const sessionAttributes = {};
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
 // --------------- Events -----------------------
 
 /**
@@ -891,7 +1733,7 @@ function onIntent(intentRequest, session, callback) {
     } else if (intentName === 'EnterIntent') {
         enter(intent, session, callback);
     } else if (intentName === 'EscapeIntent') {
-        escape(intent, session, callback);
+        escape_(intent, session, callback);
     } else if (intentName === 'FindIntent') {
         controlFind(intent, session, callback);
     } else if (intentName === 'FullscreenIntent') {
@@ -920,14 +1762,10 @@ function onIntent(intentRequest, session, callback) {
         scrollDown(intent, session, callback);
     } else if (intentName === 'ScrollUpIntent') {
         scrollUp(intent, session, callback);
-    } else if (intentName === 'SearchOtherAppsIntent') {
-        searchOtherApps(intent, session, callback);
     } else if (intentName === 'SelectIntent') {
         select(intent, session, callback);
     } else if(intentName === 'ShowBookmarksIntent') {
         showBookmarks(intent, session, callback);
-    } else if (intentName === 'StopSearchAppsIntent') {
-        stopSearchApps(intent, session, callback);
     } else if (intentName === 'TabIntent') {
         tab(intent, session, callback);
     } else if (intentName === 'UndoWordActionIntent') {
@@ -940,6 +1778,77 @@ function onIntent(intentRequest, session, callback) {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest(callback);
+    } else if (intentName === 'NextParagraphIntent') {
+        nextParagraph(intent, session, callback);
+    } else if (intentName === 'NewDocIntent') {
+        newDoc(intent, session, callback);
+    } else if (intentName === 'OpenDocIntent') {
+        openDoc(intent, session, callback);
+    } else if (intentName === 'IndentIntent') {
+        indent(intent, session, callback);
+    } else if (intentName === 'CenterIntent') {
+        center(intent, session, callback);
+    } else if (intentName === 'PageBreakIntent') {
+        pageBreak(intent, session, callback);
+    } else if (intentName === 'DecreaseFontIntent') {
+        decreaseFont(intent, session, callback);
+    } else if (intentName === 'IncreaseFontIntent') {
+        increaseFont(intent, session, callback);
+    } else if (intentName === 'BeginningofDocIntent') {
+        beginningDoc(intent, session, callback);
+    } else if (intentName === 'EndOfDocIntent') {
+        endDoc(intent, session, callback);
+    } else if (intentName === 'BeginningOfLineIntent') {
+        beginningLine(intent, session, callback);
+    } else if (intentName === 'EndOfLineIntent') {
+        endLine(intent, session, callback);
+    } else if (intentName === 'BoldIntent') {
+        bold(intent, session, callback);
+    } else if (intentName === 'ItalicIntent') {
+        italic(intent, session, callback);
+    } else if (intentName === 'UnderlineIntent') {
+        underline(intent, session, callback);
+    } else if (intentName === 'SaveAsIntent') {
+        var saveName = intentRequest.intent.slots.saveName.value;
+        saveAs(intent, session, callback, saveName);
+    } else if (intentName === 'PageBackIntent') {
+        pageBack(intent, session, callback);
+    } else if (intentName === 'PageForwardIntent') {
+        pageForward(intent, session, callback);
+    } else if (intentName === 'SearchIntent') {
+        var searchQuery = intentRequest.intent.slots.searchQuery.value;
+        search(intent, session, callback, searchQuery);
+    } else if (intentName === 'AddBookmarksIntent') {
+        addBookmarks(intent, session, callback);
+    } else if (intentName === 'BackTabIntent') {
+        backTab(intent, session, callback);
+    } else if (intentName === 'WebpageBackIntent') {
+        webpageBack(intent, session, callback);
+    } else if (intentName === 'WebpageForwardIntent') {
+        webpageForward(intent, session, callback);
+    } else if (intentName === 'SwitchTabsIntent') {
+        switchTabs(intent, session, callback);
+    } else if (intentName === 'ScrollLeftIntent') {
+        scrollLeft(intent, session, callback);
+    } else if (intentName === 'ScrollRightIntent') {
+        scrollRight(intent, session, callback);
+    } else if (intentName === 'SwitchToAppIntent') {
+        var app_name = intentRequest.intent.slots.ApplicationName.value;
+        switchApp(intent, session, callback, app_name);
+    } else if (intentName === 'GotoIntent') {
+        var link = intentRequest.intent.slots.Link.value;
+        gotoLink(intent, session, callback, link);
+    } else if (intentName === 'OpenBookmarksIntent') {
+        openBookmarks(intent, session, callback);
+    } else if (intentName === 'SwitchTabsBackIntent') {
+        switchTabsBack(intent, session, callback);
+    } else if (intentName === 'TypeIntent') {
+        var type_query = intentRequest.intent.slots.typeQuery.value;
+        type(intent, session, callback, type_query);
+    } else if (intentName === 'DownArrowIntent') {
+        downArrow(intent, session, callback);
+    } else if (intentName === 'UpArrowIntent') {
+        upArrow(intent, session, callback);
     } else {
         //sorry that's not a command i recognize
         noIntent(intent, session, callback);
