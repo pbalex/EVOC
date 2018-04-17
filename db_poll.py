@@ -19,6 +19,7 @@ def send_input(command):
 
 def goto_callback(term):
 	find_callback(term)
+	time.sleep(0.2)
 	select_callback()
 
 def find_callback(term):
@@ -50,10 +51,31 @@ def open_bookmarks_callback():
 def type_callback(term):
 	keyboard.write(term)
 
+def save_as_callback(term):
+	print (term)
+	send_input('f12')
+	time.sleep(1)
+	keyboard.write(term)
+	time.sleep(0.05)
+	send_input('enter')
+
+def scroll_right():
+	keyboard.press("right")
+	time.sleep(1)
+	keyboard.release("right")
+
+def scroll_left():
+	keyboard.press("left")
+	time.sleep(1)
+	keyboard.release("left")
+
+
+
 def switch_to_window(switch):
 	switch = switch.lower()
 	if (switch == "reference card" or switch == "reference"):
-		switch = "referencecard"
+		webbrowser.open_new_tab('EVOCreferencecard.html')
+		return
 	#Generates list of the hwnd of all 'real' windows.
 	def call(hwnd, param):
 		"""
@@ -128,17 +150,7 @@ def query_db():
 				if (i['COMMAND'] == "SELECT"):
 					select_callback()
 				elif (i['COMMAND'] == "OPEN REFERENCE"):
-					f = open('helloworld.html','w')
-
-					message = """<html>
-					<head></head>
-					<body><p>Hello World!</p></body>
-					</html>"""
-
-					f.write(message)
-					f.close()
-
-					webbrowser.open_new_tab('helloworld.html')
+					webbrowser.open_new_tab('EVOCreferencecard.html')
 					# subprocess.run("python run_gui.py", shell=False)
 				elif (i['COMMAND'] == "SWITCH TO"):
 					switch_to_window(i['CUSTOM'])
@@ -152,6 +164,12 @@ def query_db():
 					open_bookmarks_callback()
 				elif (i['COMMAND'] == "TYPE"):
 					type_callback(i['CUSTOM'])
+				elif (i['COMMAND'] == "SAVE AS"):
+					save_as_callback(i['CUSTOM'])
+				elif (i['COMMAND'] == "SCROLL RIGHT"):
+					scroll_right_callback()
+				elif (i['COMMAND'] == "SCROLL LEFT"):
+					scroll_left_callback()
 				#all other basic commands
 				else:
 					#looking up command shortcut
