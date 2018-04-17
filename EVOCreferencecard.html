@@ -1,8 +1,4 @@
-import webbrowser
-
-f = open('EVOCreferencecard.html','w')
-
-message = """<html>
+<html>
 <style>
 table {
     font-family: arial, sans-serif;
@@ -157,6 +153,10 @@ tr:nth-child(even) {
     <td>New Document</td>
     <td>Creates a new document in Word</td>
     <td>"make new document" "make new doc" "create new doc" "create new document" "new document"</td>
+  </tr>
+  <td>Open Bookmarks</td>
+    <td>Opens the Bookmark Manager</td>
+    <td>"open bookmarks" "open bookmark manager"</td>
   </tr>
   <tr>
     <td>Open Document</td>
@@ -314,10 +314,4 @@ tr:nth-child(even) {
     <td>"zoom out" "smaller"</td>
   </tr>
 </table></body>
-</html>"""
-
-f.write(message)
-f.close()
-
-filename = 'file:///Users/lisam.valkevich/Desktop/' + 'EVOCreferencecard.html'
-webbrowser.open_new_tab(filename)
+</html>

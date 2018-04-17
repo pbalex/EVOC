@@ -1,297 +1,632 @@
 {
-  "languageModel": {
-    "intents": [
-      {
-        "name": "AMAZON.CancelIntent",
-        "samples": [
-          "cancel"
-        ]
-      },
-      {
-        "name": "AMAZON.HelpIntent",
-        "samples": [
-          "help"
-        ]
-      },
-      {
-        "name": "AMAZON.StopIntent",
-        "samples": [
-          "close evoke",
-          "end evoke",
-          "open dragon"
-        ]
-      },
-      {
-        "name": "CloseAllOpenTabsIntent",
-        "samples": [
-          "close all",
-          "close all tabs"
-        ],
-        "slots": []
-      },
-      {
-        "name": "CloseReferenceCardIntent",
-        "samples": [
-          "close reference card",
-          "close reference"
-        ],
-        "slots": []
-      },
-      {
-        "name": "CloseTabIntent",
-        "samples": [
-          "close tab"
-        ],
-        "slots": []
-      },
-      {
-        "name": "CloseWindowIntent",
-        "samples": [
-          "close window"
-        ],
-        "slots": []
-      },
-      {
-        "name": "CloseWordDocIntent",
-        "samples": [
-          "close document",
-          "close word document"
-        ],
-        "slots": []
-      },
-      {
-        "name": "EnterIntent",
-        "samples": [
-          "enter",
-          "next"
-        ],
-        "slots": []
-      },
-      {
-        "name": "EscapeIntent",
-        "samples": [
-          "escape"
-        ],
-        "slots": []
-      },
-      {
-        "name": "FindIntent",
-        "samples": [
-          "find",
-          "control find",
-          "control f"
-        ],
-        "slots": []
-      },
-      {
-        "name": "FullscreenIntent",
-        "samples": [
-          "full screen",
-          "show full screen",
-          "exit full screen",
-          "exit"
-        ],
-        "slots": []
-      },
-      {
-        "name": "JumpToAddressBarIntent",
-        "samples": [
-          "search",
-          "type url",
-          "search google",
-          "jump to address bar"
-        ],
-        "slots": []
-      },
-      {
-        "name": "OpenInternetIntent",
-        "samples": [
-          "open chrome",
-          "open internet",
-          "open internet browser",
-          "open google"
-        ],
-        "slots": []
-      },
-      {
-        "name": "OpenNewWindowIntent",
-        "samples": [
-          "open new window"
-        ],
-        "slots": []
-      },
-      {
-        "name": "OpenReferenceCardIntent",
-        "samples": [
-          "open reference",
-          "open reference card",
-          "open card",
-          "open help card",
-          "open help",
-          "help card",
-          "reference card",
-          "reference"
-        ],
-        "slots": []
-      },
-      {
-        "name": "OpenTabIntent",
-        "samples": [
-          "open tab",
-          "new tab",
-          "open new tab"
-        ],
-        "slots": []
-      },
-      {
-        "name": "PrintPageIntent",
-        "samples": [
-          "print",
-          "print page"
-        ],
-        "slots": []
-      },
-      {
-        "name": "RedoWordActionIntent",
-        "samples": [
-          "redo"
-        ],
-        "slots": []
-      },
-      {
-        "name": "RefreshIntent",
-        "samples": [
-          "refresh",
-          "refresh page",
-          "refresh tab"
-        ],
-        "slots": []
-      },
-      {
-        "name": "ReopenClosedTabIntent",
-        "samples": [
-          "reopen closed tab",
-          "reopen close",
-          "reopen closed",
-          "reopen last tab",
-          "reopen tab",
-          "reopen last"
-        ],
-        "slots": []
-      },
-      {
-        "name": "SaveWordDocIntent",
-        "samples": [
-          "save",
-          "save word doc",
-          "save document",
-          "save word document"
-        ],
-        "slots": []
-      },
-      {
-        "name": "ScrollDownIntent",
-        "samples": [
-          "scroll down",
-          "down"
-        ],
-        "slots": []
-      },
-      {
-        "name": "ScrollUpIntent",
-        "samples": [
-          "scroll up",
-          "up"
-        ],
-        "slots": []
-      },
-      {
-        "name": "SearchOtherAppsIntent",
-        "samples": [
-          "search other apps",
-          "search other applications",
-          "control tab"
-        ],
-        "slots": []
-      },
-      {
-        "name": "SelectIntent",
-        "samples": [
-          "select",
-          "choose"
-        ],
-        "slots": []
-      },
-      {
-        "name": "ShowBookmarksIntent",
-        "samples": [
-          "show bookmarks",
-          "bookmarks"
-        ],
-        "slots": []
-      },
-      {
-        "name": "StopSearchAppsIntent",
-        "samples": [
-          "stop search",
-          "select app",
-          "select application"
-        ],
-        "slots": []
-      },
-      {
-        "name": "TabIntent",
-        "samples": [
-          "tab",
-          "press tab"
-        ],
-        "slots": []
-      },
-      {
-        "name": "UndoWordActionIntent",
-        "samples": [
-          "undo"
-        ],
-        "slots": []
-      },
-      {
-        "name": "UnknownCommandIntent",
-        "samples": [
-          "hello",
-          "whats up",
-          "jglkjfa",
-          "jfald",
-          "vjaoe",
-          "jfiwod",
-          "jjoqq",
-          "jfjsow",
-          "nvjvai",
-          "jjwoe",
-          "faiwoe",
-          "fjfiwe",
-          "jfajoe",
-          "gjweij",
-          "jdwiejf"
-        ],
-        "slots": []
-      },
-      {
-        "name": "ZoomInIntent",
-        "samples": [
-          "zoom in",
-          "bigger"
-        ],
-        "slots": []
-      },
-      {
-        "name": "ZoomOutIntent",
-        "samples": [
-          "zoom out",
-          "smaller"
-        ],
-        "slots": []
-      }
-    ],
-    "invocationName": "evoke"
-  }
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "evoke",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "cancel"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "help"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "close evoke",
+                        "end evoke",
+                        "open dragon"
+                    ]
+                },
+                {
+                    "name": "CloseAllOpenTabsIntent",
+                    "slots": [],
+                    "samples": [
+                        "close all",
+                        "close all tabs"
+                    ]
+                },
+                {
+                    "name": "CloseTabIntent",
+                    "slots": [],
+                    "samples": [
+                        "close tab"
+                    ]
+                },
+                {
+                    "name": "CloseWindowIntent",
+                    "slots": [],
+                    "samples": [
+                        "close the window",
+                        "close window"
+                    ]
+                },
+                {
+                    "name": "EnterIntent",
+                    "slots": [],
+                    "samples": [
+                        "enter",
+                        "next"
+                    ]
+                },
+                {
+                    "name": "EscapeIntent",
+                    "slots": [],
+                    "samples": [
+                        "escape"
+                    ]
+                },
+                {
+                    "name": "FindIntent",
+                    "slots": [
+                        {
+                            "name": "findQuery",
+                            "type": "AMAZON.LITERAL"
+                        }
+                    ],
+                    "samples": [
+                        "find {find query | findQuery}",
+                        "find {magna carta| findQuery}",
+                        "find {computer | findQuery}"
+                    ]
+                },
+                {
+                    "name": "FullscreenIntent",
+                    "slots": [],
+                    "samples": [
+                        "go full screen",
+                        "full screen",
+                        "show full screen",
+                        "exit full screen",
+                        "exit"
+                    ]
+                },
+                {
+                    "name": "JumpToAddressBarIntent",
+                    "slots": [],
+                    "samples": [
+                        "jump to address bar"
+                    ]
+                },
+                {
+                    "name": "OpenNewWindowIntent",
+                    "slots": [],
+                    "samples": [
+                        "open a window",
+                        "open window",
+                        "new window",
+                        "open new window"
+                    ]
+                },
+                {
+                    "name": "OpenReferenceCardIntent",
+                    "slots": [],
+                    "samples": [
+                        "open reference",
+                        "open reference card",
+                        "open card",
+                        "open help card",
+                        "open help",
+                        "help card",
+                        "reference card",
+                        "reference"
+                    ]
+                },
+                {
+                    "name": "OpenTabIntent",
+                    "slots": [],
+                    "samples": [
+                        "open tab",
+                        "new tab",
+                        "open new tab"
+                    ]
+                },
+                {
+                    "name": "PrintPageIntent",
+                    "slots": [],
+                    "samples": [
+                        "print",
+                        "print page"
+                    ]
+                },
+                {
+                    "name": "RedoWordActionIntent",
+                    "slots": [],
+                    "samples": [
+                        "redo"
+                    ]
+                },
+                {
+                    "name": "RefreshIntent",
+                    "slots": [],
+                    "samples": [
+                        "reload page",
+                        "reload",
+                        "refresh",
+                        "refresh page",
+                        "refresh tab"
+                    ]
+                },
+                {
+                    "name": "ReopenClosedTabIntent",
+                    "slots": [],
+                    "samples": [
+                        "reopen closed tab",
+                        "reopen close",
+                        "reopen closed",
+                        "reopen last tab",
+                        "reopen tab",
+                        "reopen last"
+                    ]
+                },
+                {
+                    "name": "SaveWordDocIntent",
+                    "slots": [],
+                    "samples": [
+                        "save",
+                        "save word doc",
+                        "save document",
+                        "save word document"
+                    ]
+                },
+                {
+                    "name": "ScrollDownIntent",
+                    "slots": [],
+                    "samples": [
+                        "page down",
+                        "scroll down"
+                    ]
+                },
+                {
+                    "name": "ScrollUpIntent",
+                    "slots": [],
+                    "samples": [
+                        "page up",
+                        "scroll up"
+                    ]
+                },
+                {
+                    "name": "SelectIntent",
+                    "slots": [],
+                    "samples": [
+                        "select",
+                        "choose"
+                    ]
+                },
+                {
+                    "name": "ShowBookmarksIntent",
+                    "slots": [],
+                    "samples": [
+                        "show bookmarks",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "TabIntent",
+                    "slots": [],
+                    "samples": [
+                        "tab",
+                        "press tab"
+                    ]
+                },
+                {
+                    "name": "UndoWordActionIntent",
+                    "slots": [],
+                    "samples": [
+                        "undo"
+                    ]
+                },
+                {
+                    "name": "UnknownCommandIntent",
+                    "slots": [],
+                    "samples": [
+                        "hello",
+                        "whats up",
+                        "jglkjfa",
+                        "jfald",
+                        "vjaoe",
+                        "jfiwod",
+                        "jjoqq",
+                        "jfjsow",
+                        "nvjvai",
+                        "jjwoe",
+                        "faiwoe",
+                        "fjfiwe",
+                        "jfajoe",
+                        "gjweij",
+                        "jdwiejf"
+                    ]
+                },
+                {
+                    "name": "ZoomInIntent",
+                    "slots": [],
+                    "samples": [
+                        "zoom in",
+                        "bigger"
+                    ]
+                },
+                {
+                    "name": "ZoomOutIntent",
+                    "slots": [],
+                    "samples": [
+                        "zoom out",
+                        "smaller"
+                    ]
+                },
+                {
+                    "name": "NextParagraphIntent",
+                    "slots": [],
+                    "samples": [
+                        "move to next paragraph",
+                        "paragraph",
+                        "next paragraph"
+                    ]
+                },
+                {
+                    "name": "NewDocIntent",
+                    "slots": [],
+                    "samples": [
+                        " make new document",
+                        "make new doc",
+                        "create new doc",
+                        "create new document",
+                        "new document",
+                        "new doc",
+                        "create new word doc",
+                        "create new word document"
+                    ]
+                },
+                {
+                    "name": "OpenDocIntent",
+                    "slots": [],
+                    "samples": [
+                        "open existing doc",
+                        "open doc",
+                        "open word document",
+                        "open document",
+                        "open word doc"
+                    ]
+                },
+                {
+                    "name": "IndentIntent",
+                    "slots": [],
+                    "samples": [
+                        "indent paragraph",
+                        "indent"
+                    ]
+                },
+                {
+                    "name": "CenterIntent",
+                    "slots": [],
+                    "samples": [
+                        "center paragraph",
+                        "center"
+                    ]
+                },
+                {
+                    "name": "PageBreakIntent",
+                    "slots": [],
+                    "samples": [
+                        "create page break",
+                        "page break",
+                        "insert page break"
+                    ]
+                },
+                {
+                    "name": "DecreaseFontIntent",
+                    "slots": [],
+                    "samples": [
+                        "smaller font size",
+                        "smaller font",
+                        "decrease font size",
+                        "decrease font"
+                    ]
+                },
+                {
+                    "name": "IncreaseFontIntent",
+                    "slots": [],
+                    "samples": [
+                        "larger font",
+                        "increase font",
+                        "bigger font",
+                        "bigger font size",
+                        "increase font size"
+                    ]
+                },
+                {
+                    "name": "BeginningofDocIntent",
+                    "slots": [],
+                    "samples": [
+                        "jump to top",
+                        "beginning of doc",
+                        "jump to beginning of doc",
+                        "jump to beginning of document",
+                        "jump to beginning"
+                    ]
+                },
+                {
+                    "name": "EndOfDocIntent",
+                    "slots": [],
+                    "samples": [
+                        "end of doc",
+                        "jump to end of document",
+                        "jump to end of doc",
+                        "jump to end"
+                    ]
+                },
+                {
+                    "name": "BeginningOfLineIntent",
+                    "slots": [],
+                    "samples": [
+                        "beginning of line",
+                        "start of line"
+                    ]
+                },
+                {
+                    "name": "EndOfLineIntent",
+                    "slots": [],
+                    "samples": [
+                        "end of line",
+                        "jump to end of line"
+                    ]
+                },
+                {
+                    "name": "BoldIntent",
+                    "slots": [],
+                    "samples": [
+                        "undo bold",
+                        "remove bold",
+                        "unbold",
+                        "make bold",
+                        "bold",
+                        "bold text",
+                        "bold word"
+                    ]
+                },
+                {
+                    "name": "ItalicIntent",
+                    "slots": [],
+                    "samples": [
+                        "undo italic",
+                        "remove italic",
+                        "italic",
+                        "italicize",
+                        "make italic",
+                        "make word italic",
+                        "italicize word",
+                        "italicize text"
+                    ]
+                },
+                {
+                    "name": "UnderlineIntent",
+                    "slots": [],
+                    "samples": [
+                        "undo underline",
+                        "remove underline",
+                        "underline",
+                        "underline text",
+                        "underline word"
+                    ]
+                },
+                {
+                    "name": "SaveAsIntent",
+                    "slots": [
+                        {
+                            "name": "saveName",
+                            "type": "AMAZON.LITERAL"
+                        }
+                    ],
+                    "samples": [
+                        "save as {doc name| saveName}",
+                        "save as {name| saveName}",
+                        "save document as {name | saveName}",
+                        "save doc as {name | saveName}"
+                    ]
+                },
+                {
+                    "name": "PageBackIntent",
+                    "slots": [],
+                    "samples": [
+                        "go a page back",
+                        "go back a page"
+                    ]
+                },
+                {
+                    "name": "PageForwardIntent",
+                    "slots": [],
+                    "samples": [
+                        "go a page forward",
+                        "go forward a page"
+                    ]
+                },
+                {
+                    "name": "SearchIntent",
+                    "slots": [
+                        {
+                            "name": "searchQuery",
+                            "type": "AMAZON.LITERAL"
+                        }
+                    ],
+                    "samples": [
+                        "google {magna carta| searchQuery}",
+                        "google {search | searchQuery}",
+                        "google {hello world| searchQuery}",
+                        "search {hello world| searchQuery}",
+                        "search {magna carta| searchQuery}",
+                        "search {search | searchQuery}"
+                    ]
+                },
+                {
+                    "name": "AddBookmarksIntent",
+                    "slots": [],
+                    "samples": [
+                        "make bookmark",
+                        "create bookmark",
+                        "add bookmark"
+                    ]
+                },
+                {
+                    "name": "BackTabIntent",
+                    "slots": [],
+                    "samples": [
+                        "shift tab",
+                        "previous link",
+                        "previous"
+                    ]
+                },
+                {
+                    "name": "WebpageBackIntent",
+                    "slots": [],
+                    "samples": [
+                        "back",
+                        "previous webpage",
+                        "previous page",
+                        "go back a page",
+                        "webpage back"
+                    ]
+                },
+                {
+                    "name": "WebpageForwardIntent",
+                    "slots": [],
+                    "samples": [
+                        "go forward",
+                        "forward",
+                        "next webpage",
+                        "next page",
+                        "go forward a page",
+                        "webpage forward"
+                    ]
+                },
+                {
+                    "name": "SwitchTabsIntent",
+                    "slots": [],
+                    "samples": [
+                        "right tab",
+                        "next tab",
+                        "switch tab"
+                    ]
+                },
+                {
+                    "name": "ScrollLeftIntent",
+                    "slots": [],
+                    "samples": [
+                        "scroll left"
+                    ]
+                },
+                {
+                    "name": "ScrollRightIntent",
+                    "slots": [],
+                    "samples": [
+                        "scroll to the right",
+                        "scroll right"
+                    ]
+                },
+                {
+                    "name": "SwitchToAppIntent",
+                    "slots": [
+                        {
+                            "name": "ApplicationName",
+                            "type": "AMAZON.LITERAL"
+                        }
+                    ],
+                    "samples": [
+                        "open {application name | ApplicationName}",
+                        "open {chrome | ApplicationName}",
+                        "open {word | ApplicationName}",
+                        "switch to {reference card|ApplicationName}",
+                        "switch to {reference | ApplicationName}",
+                        "switch to {word| ApplicationName}",
+                        "switch to {chrome | ApplicationName}",
+                        "switch to {name of app |ApplicationName}"
+                    ]
+                },
+                {
+                    "name": "GotoIntent",
+                    "slots": [
+                        {
+                            "name": "Link",
+                            "type": "AMAZON.LITERAL"
+                        }
+                    ],
+                    "samples": [
+                        "go to {encyclopedia|Link}",
+                        "go to {wikipedia| Link}",
+                        "go to {link|Link}"
+                    ]
+                },
+                {
+                    "name": "OpenBookmarksIntent",
+                    "slots": [],
+                    "samples": [
+                        "open bookmark manager",
+                        "open bookmarks"
+                    ]
+                },
+                {
+                    "name": "SwitchTabsBackIntent",
+                    "slots": [],
+                    "samples": [
+                        "left tab",
+                        "previous tab",
+                        "back tab"
+                    ]
+                },
+                {
+                    "name": "TypeIntent",
+                    "slots": [
+                        {
+                            "name": "typeQuery",
+                            "type": "AMAZON.LITERAL"
+                        }
+                    ],
+                    "samples": [
+                        "type {i can't find my computer | typeQuery}",
+                        "type {ann arbor | typeQuery}",
+                        "type {the quick brown fox jumped | typeQuery}",
+                        "type {magna carta| typeQuery}",
+                        "type {hello world| typeQuery}",
+                        "type {search query | typeQuery}",
+                        "type {query | typeQuery}"
+                    ]
+                },
+                {
+                    "name": "DownArrowIntent",
+                    "slots": [],
+                    "samples": [
+                        "down",
+                        "arrow down"
+                    ]
+                },
+                {
+                    "name": "UpArrowIntent",
+                    "slots": [],
+                    "samples": [
+                        "up",
+                        "arrow up"
+                    ]
+                },
+                {
+                    "name": "CloseWordDocIntent",
+                    "slots": [],
+                    "samples": [
+                        "close word doc",
+                        "close doc"
+                    ]
+                },
+                {
+                    "name": "WakeUpIntent",
+                    "slots": [],
+                    "samples": [
+                        "wake up"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
 }
