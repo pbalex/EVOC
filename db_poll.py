@@ -59,15 +59,16 @@ def save_as_callback(term):
 	time.sleep(0.05)
 	send_input('enter')
 
-def scroll_right():
-	keyboard.press("right")
-	time.sleep(1)
-	keyboard.release("right")
+def scroll_right_callback():
+	for i in range(0,10):
+		keyboard.press_and_release("right")
+		time.sleep(0.1)
+	
 
-def scroll_left():
-	keyboard.press("left")
-	time.sleep(1)
-	keyboard.release("left")
+def scroll_left_callback():
+	for i in range(0,10):
+		keyboard.press_and_release("left")
+		time.sleep(0.1)
 
 
 
